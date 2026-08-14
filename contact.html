@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Info</title>
+</head>
+<body style="background-color: linen;">
+   <!-- header for the navigation and logo placement-->
+    <header>
+        <!-- creating a table to align the header details-->
+        <table width="100%" cellpaddding="16" cellspacing="0">
+           <tr>
+            <td width="35%" valigh="middle">
+            <img src="Images/logo.png" style = "width: 65px; height: 75px;" alt="Golden-touch-logo">
+            </td>
+            <td width="65%" align="right" valign="middle">
+             <!-- the navigation link-->
+             <nav>
+            <a href = "Home.html">Home|</a>
+            <a href = "product.html">Products and Services|</a>
+            <a href = "About.html"> About US|</a>
+            <a href = "contact.html"> Contact US</a>
+        </nav>
+        </td>
+         </tr>
+        </table>
+        <!--business name and logo-->
+       <h1>Golden Touch Carpentry</h1>
+       <p font-color="blue">You Dream It, We Make It!</p>
+    </header>
+    <!--main to input content-->
+   <main>
+        <!-- Page Banner -->
+                <h1>Contact Us &amp; Request a Quote</h1>
+                <p>Have a question or need a custom carpentry estimate? Get in touch with our team across Gauteng.</p>
+        <!-- Main Contact & Inquiry Section -->
+                <!-- Contact Info & Locations -->
+                <div class="contact-info-wrapper">
+                    <h2>Get In Touch</h2>
+                    <p>Contact our workshops directly or stop by during operating hours.</p>
+            <!-- Location -->
+                    <h3>Johannesburg Main Workshop</h3>
+                        <p><strong>Address:</strong>321 Main Street Rosebank,, Johannesburg, Gauteng.</p>
+                        <p><strong>Phone:</strong> (27) 63 918 7294</p>
+                        <p><strong>Email:</strong> carpentry@goldentouch.co.za</p>
+                <!--creating Inquiry Form -->
+                    <h2>Send Us an Inquiry</h2>
+                    <p>Fill out the form below to request a detailed line-item estimate or project survey.</p>
+                    <form action="#" method="POST" class="inquiry-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="e.g. John Doe" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" placeholder="name@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone / WhatsApp Number *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="082 123 4567" required>
+                            </div>
+                        </div>
+                        <!--creating a button to submit form-->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="serviceType">Service Required *</label>
+                                <select id="serviceType" name="serviceType" required>
+                                    <option value="" disabled selected>Select a Service...</option>
+                                    <option value="cabinetry">Custom Cabinetry &amp; Kitchens</option>
+                                    <option value="renovation">Home / Office Renovation</option>
+                                    <option value="doors">Custom Home &amp; Decor</option>
+                                    <option value="roofing">Bedroom &amp; fit-in-wardrobes</option>
+                                    <option value="other">General Inquiry / Maintenance</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="suburb">Your Location / Suburb *</label>
+                                <input type="text" id="suburb" name="suburb" placeholder="e.g. Sandton, Midrand, Centurion" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Project Description / Details *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about dimensions, material preferences, or project requirements..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="fileUpload">Attach Plans / Images (Optional)</label>
+                            <input type="file" id="fileUpload" name="fileUpload" accept="image/*,.pdf">
+                            <small>Max file size: 5MB (Blueprints, site images, or reference sketches)</small>
+                        </div>
+                        <button type="submit">Submit Inquiry</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <!--creating a footer-->
+     <footer>
+        <!-- creating a table to align the header details-->
+        <table width="100%" cellpaddding="16" cellspacing="0">
+            <tr>
+             <td width = "50%" valign="top">
+                <strong>Golden Touch Carpentry</strong>
+                <p font-color="blue">You Dream It, We Make It!</p>
+                <address 321 Main Street <br>
+                    Rosebank, Johannesburg 2001>
+             </td> 
+             <td>
+                <p> 
+                    <a href = "carpentry@goldentouch.co.za">carpentry@goldentouch.co.za</a>
+                </p>
+                <p>
+                    <a href = "tel:+27639187294">(27) 63 918 7294</a>
+                </p>
+             </td>  
+            </tr>
+            <tr>
+                <td align="left">
+            <img src="Images/logo.png" style = "width: 65px; height: 75px;">
+            </td>
+            <td align="left">
+                   &copy; ST10542227#Golden Touch Carpentry
+                </td>
+            </tr>
+        </table>
+    </footer>
+</body>
+</html>
