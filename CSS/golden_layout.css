@@ -467,7 +467,7 @@ ABOUT PAGE - TEAM + AUDIENCE LIST
     object-fit: cover;
 }
 
-,team-info{
+.team-info{
     margin: 0 0 6px;
     color: var(--ink);
     font-size: 1.3rem;
