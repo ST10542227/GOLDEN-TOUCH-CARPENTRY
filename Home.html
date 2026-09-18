@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Head to set page tittle, ensure text renders character and viewing of the page-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/CSS" href="css/golden_layout.css">
+</head>
+<!--creating the body element to store the main and content-->
+<body >
+    <!-- header for the navigation and logo placement-->
+    <header class="site-header">
+            <a class="brand" href="Home.html" aria-label="Golden Touch Carpentry home">
+        <!--business name and logo-->
+            <img src="Images/GTC-Logo.png" 
+            alt="Golden-touch-logo" class="brand-logo">
+            <span  class="brand-copy">
+              <span class="brand-name">Golden Touch Carpentry</span>
+               <span class="brand-slogan">You Dream It, We Make It! </span> 
+            </span>
+        </a>
+             <!-- the navigation link-->
+             <nav class="site-nav" aria-label="Main navigation">
+            <a href = "Home.html">Home |</a>
+            <a href = "product.html">Products &amp; Services |</a>
+            <a href = "About.html"> About US |</a>
+            <a href = "enquiry.html"> Enquiry |</a>
+            <a href = "contact.html"> Contact US |</a>         
+             </nav>
+    </header>
+    <!--main to input content-->
+    <main class="home">
+        <div class="home-overlay"></div>
+        <div class="home-content">
+            <section class="welcome-section">
+            <span class="welcome-badge">Welcome To Golden Touch Carpentry</span>
+            <h1 class="welcome-title">Crafting Spaces You Fall In-Love With Every Moment</h1>
+            <p class="welcome-into">
+                Since opening our doors in 2020 under the guidance 
+                of Sikhumbuzo Mbatha, we've dedicated ourselves to delivering master-level
+                woodwork tailored specifically to your lifestyle.
+            </p>
+            <a class="primary-button" href="enquiry.html">
+                Request a Consultation
+            </a>
+             </section>
+            <!-- company Introduction-->
+           <section class="intro-section">
+            <span class="section-label"> What we do</span>
+            <h2>Custom Carpentry & Bespoke Renovation Experts in Gauteng</h2>
+            <p> 
+                Our Customers love our custom carpentry from home decor to renovation, to office 
+                decor, to kitchen bedroom and bathroom fashionings. Golden Touch aims to deliver all
+                heart visioned creations to each customeer with a vision. We are Dedicated To Serving
+                Johannesburg, Pretoria and Greater Gauteng
+            </p>
+            </section>
+            <!-- home page work review-->
+             <section class="work-section">
+                <span clas="section-label"> Our Craftsmanship</span>
+                <h2>Snippet Of Our Work</h2>
+        <!-- adding a the products and services details-->
+         <div class = work-grid>
+            <article class="work-card">
+             <h3>Bedroom Work</h3>
+                    <div class="work-images">
+                        <img 
+                        src="Images/fit-in-wardrope.jpg" 
+                        alt="Custom-fitted-wardrobe" >                   
+                        <img 
+                        src="Images/bedroom.jpg" 
+                        alt="Custom-bedroom-woodwork">
+                    </div>
+             </article> 
+                <article class="work-card">
+             <h3>Kitchen Work</h3> 
+             <div class="work-images">
+                <img src="Images/kitchen.jpg" alt="bedroom-decor">                   
+                <img src="Images/kitchen2.jpg" alt="bedroom-decor">
+             </div>                       
+                </article> 
+         </div>               
+           </section>
+           <!--Why customers should choose the company-->
+             <section class="why-section"> 
+        <div class="why-content">
+            <span class="section-label">
+                The Golden Touch Difference
+            </span>
+        <h2>WHY CHOOSE US?</h2>
+        <P> 
+            At Golden Touch Carpentry, we blend traditional craftsmanship with modern
+            design to transform your spaces into lasting works of art. Founded in 
+            Johannesburg, our team brings passion, precision, and personal dedication 
+            to every project—whether it’s custom cabinetry, full home renovations, 
+            bespoke doors, or structural roofing. We prioritize quality materials, 
+            transparent communication, and sustainable woodworking techniques so you 
+            receive durable, beautiful results on schedule and within budget. From 
+            initial concept to the final finish, we treat your home or business with 
+            the care it deserves, serving communities across Gauteng with reliability 
+            and craftsmanship you can trust. 
+        </P>
+        </div>
+        <div class="video-wrapper">
+            <video controls preload="metadata">
+                <source 
+                src="Images/woodwork Project.mp4" 
+                type="video/mp4" alt="woodworking">
+            </video>
+        </div>     
+            </section> 
+            </div>
+    </main>
+    <!--  Shared footer with business details-->
+    <footer class="site-footer">
+        <div class="footer-grid"> 
+            <div class="footer-info">       
+                 <address class="footer-text">
+                    321 Main Street<br>
+                    Rosebank, Johannesburg 2001</address>
+                     <p> 
+                    <a href = "carpentry@goldentouch.co.za" class="links">carpentry@goldentouch.co.za</a>
+                    <br>
+                    <a href = "tel:+27639187294" class="links" id="contact">(27)639187294</a>
+                </p>    
+        </div>    
+         <div class="footer-brand">
+             <img 
+              src="Images/GTC-Logo.png" 
+              alt="Golden-touch-logo" 
+              class="footer-logo"
+              >
+             <span id="footer-brand">
+                <strong class="footer-label">Golden Touch Carpentry</strong>
+                <small class="footer-text">You Dream It, We Make It!</small>
+            </span>    
+            </div>     
+        </div>  
+        <p class="copyright">
+                   &copy; ST10542227#Golden Touch Carpentry. All rights reserved.
+            </p>             
+    </footer>
+</body>
+</html>

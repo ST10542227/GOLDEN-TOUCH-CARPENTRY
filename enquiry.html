@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry | Golden Touch Carpentry</title>
+    <link rel="stylesheet" type="text/CSS" href="css/golden_layout.css">
+</head>
+
+<body class="enquiry">
+    <!-- header for the navigation and logo placement-->
+    <header class="site-header">
+            <a class="brand" href="Home.html" aria-label="Golden Touch Carpentry home">
+        <!--business name and logo-->
+            <img src="Images/GTC-Logo.png" 
+            alt="Golden-touch-logo" class="brand-logo">
+            <span  class="brand-copy">
+              <span class="brand-name">Golden Touch Carpentry</span>
+               <span class="brand-slogan">You Dream It, We Make It! </span> 
+            </span>
+        </a>
+             <!-- the navigation link-->
+             <nav class="site-nav" aria-label="Main navigation">
+            <a href = "Home.html">Home |</a>
+            <a href = "product.html">Products &amp; Services |</a>
+            <a href = "About.html"> About US |</a>
+            <a href = "enquiry.html"> Enquiry |</a>
+            <a href = "contact.html"> Contact US |</a>         
+             </nav>
+    </header>
+    <!--main to input content-->
+    <main class="contact-main">
+    <section class="form-card"> 
+        <span class="section-label">Project enquiry</span>
+        <h1>Make an Enquiry</h1>
+        <p>
+            Have a question or need a custom carpentry estimate?
+            Get in touch with our team across Gauteng.
+        </p>
+      <form action ="#" method="post" 
+            class="inquiry-form" enctype="multipart/form-data">
+            <!-- CUSTOMER NAME and surname -->
+            <div class="form-group">
+                <label for="firstname">First Name:</label>
+                <input 
+                    type = "firstname" 
+                    id="firstname" 
+                    name="Studentfirstname"
+                    placeholder="John"
+                    autocomplete="name" 
+                    required>
+                <label for="lastname">Last Name:</label>
+                <input 
+                    type = "lastname" 
+                    id="lastname" 
+                    name="StudentLastname" 
+                    placeholder="Brown"
+                    autocomplete="family-name"
+                    required>
+            </div>
+            <!--Email and telephone-->
+            <div class="form-row">
+                <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="studentEmail"
+                    placeholder="name@example.com" 
+                    autocomplete="email"
+                    required>
+                </div>
+                <div class="form-group">
+                <label for="enquiry-phone">Phone / WhatsApp Number</label>
+                <input 
+                    type="tel"
+                    id="enquiry-phone"
+                    name="phone"
+                    placeholder="089 765 4232"
+                    autocomplete="tel"
+                    required>
+            </div>
+        </div>
+        <!--Service and location-->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="service-type">Service Required</label>
+                <select name="serviceType" id="service-type" required>
+                    <option value ="" selected disabled>
+                        select a service
+                    </option>
+                    <option value="Cabinetry">
+                        Custom Cabinetry &amp; Kitchens
+                    </option>
+                    <option value="renovation"> 
+                        Home / Office Renovation
+                    </option>
+                    <option value="decor"> Custom Home Decor</option>
+                    <option value="Wardrobes">
+                        Bedroom &amp; Fitted Wardrobes
+                    </option>
+                    <option value="other">
+                        General equiry / Maintenance
+                    </option>               
+                </select>
+            </div>
+            <!--project Description-->           
+        <div class="form-group">
+            <label for="project-message">
+                Project Description / Details
+            </label>
+            <textarea 
+            id="project-message"
+            name="message"
+            rows="6"
+            placeholder="Tell us about your dimensions, materials, 
+            and project requirements" required>
+            </textarea>
+        </div>   
+        <!--Optional file upload-->
+        <div class="form-group">
+            <label for="file-upload">
+                Attach plans / Images
+                <small>(optional)</small>
+            </label>
+            <input 
+                type="file"
+                id="file-upload"
+                name="fileUpload"
+                accept="image/*,pdf">
+            <small>
+                Maximum file size: 5MB.
+            </small>
+        </div>
+       <button type="submit" class="primary-button">
+        Request a Quotation
+       </button>   
+    </form>
+    </section>
+    </main>
+      <!--  Shared footer with business details-->
+    <footer class="site-footer">
+        <div class="footer-grid"> 
+            <div class="footer-info">       
+                 <address class="footer-text">
+                    321 Main Street<br>
+                    Rosebank, Johannesburg 2001</address>
+                     <p> 
+                    <a href = "carpentry@goldentouch.co.za" class="links">carpentry@goldentouch.co.za</a>
+                    <br>
+                    <a href = "tel:+27639187294" class="links" id="contact">(27)639187294</a>
+                </p>    
+        </div>    
+         <div class="footer-brand">
+             <img 
+              src="Images/GTC-Logo.png" 
+              alt="Golden-touch-logo" 
+              class="footer-logo"
+              >
+             <span id="footer-brand">
+                <strong class="footer-label">Golden Touch Carpentry</strong>
+                <small class="footer-text">You Dream It, We Make It!</small>
+            </span>    
+            </div>     
+        </div>  
+        <p class="copyright">
+                   &copy; ST10542227#Golden Touch Carpentry. All rights reserved.
+            </p>             
+    </footer>
+</body>
+</html>

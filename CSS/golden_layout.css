@@ -1,0 +1,509 @@
+/*-----------------------
+Global Variables
+Affects all pages
+-------------------------*/
+
+/*Reusable color variables used throughout the page*/
+:root{
+    --ink: #17251f;
+    --muted-ink: #66736d;
+    --paper:#B58953;
+    --line: #e4e8e3;
+    --accent: #bb5b35;
+    --accent-dark: #934326;
+    --white: #ffffff;
+    --shadow: 0 18px rgba(23, 37, 31, 0.14);
+
+}
+
+/*Makes element sizing iclude padding and borders in the declared width*/
+*{
+    box-sizing: border-box;
+}
+
+/*Adds smooth scroll effect when navigating links jump to page sections*/
+html{
+    scroll-behavior: smooth;
+}
+
+/*Sets the default page spacing, color and line readable height*/
+body{
+    margin: 0%;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+img, video{
+    margin: 0;
+    max-width: 100%;
+}
+
+/*allows links to inherit chosen colors by their individual section*/
+a{
+    color: inherit
+}
+
+/*allows these to inherit chosen colors by their individual section*/
+button, input,
+select, textarea{
+    font: inherit;
+}
+
+/*----------------------
+Shared Header
+------------------------*/
+/*Styling the full header and places the brand and navigation on one row*/
+.site-header{
+    position:sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 18px clamp(20px, 5vw, 72px);
+    border-bottom: 1px solid var(--line);
+    background: rgba(226, 222, 209, 0.96);
+    backdrop-filter: blur(10px);
+}
+
+/*Aligns the logo mark and business name as a single clickable brand link*/
+.brand{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;  
+}
+
+/*Stacks the business name and slogan beside the logo mark*/
+.brand-copy{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/*Creates the small logo placeholder*/
+.brand-logo {
+    display:grid;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: var(--ink);
+}
+
+/*Styles the business name next to the logo*/
+.brand-name{
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/*Styling the slogan below the business*/
+.brand-slogan{
+    color: var(--muted-ink);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    white-space: normal;
+}
+/*Controls the horizntal group of navigation links and teh CTA button*/
+.site-nav{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/*Sets the default appearance of links in the main navigation*/
+.site-nav a{
+    position: relative;
+    padding: 5px 0;
+    color: var(--muted-ink);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 180ms ease;
+}
+
+/*Reates the hidden underline thta animates in under normal navigation links*/
+.site-nav a::after{
+    position: absolute;
+    right: 0%;
+    bottom: -7px;
+    left: 0;
+    height: 2px;
+    content: ""; /*creates the decorative underline elements*/
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 180ms ease;
+}
+
+/*Darkens normal navigation links when the pointer or 
+keyboard focus reaches them*/
+.site-nav a:hover, .site-nav a:focus-visible{
+    color: var(--ink);
+}
+
+/*Reveals the animated underline when a navigation link is hovered or focused*/
+.site-nav a:hover::after, .site-nav a:focus-visible::after{
+    transform: scaleX(1);
+    transform-origin: left;
+
+}
+
+/*----------------------
+Shared Buttons 
+------------------------*/
+.primary-button{
+    display: inline-block;
+    margin-top: 24px;
+    padding: 13px 22px;
+    border: 0;
+    border-radius: 6px;
+    color: var(--white);
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 
+            background-color 180ms ease,
+            transform 180ms ease;
+}
+
+.primary-button:hover, 
+.primary-button:focus-visible{
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+}
+
+/*
+-----------------------
+Home Page Styles
+-----------------------
+*/
+
+/*Styling the backgound of my Home page*/
+.home{
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    overflow: hidden;
+    background-image: url("../Images/woodwork5.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;   
+}
+
+.home-overlay{
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(135deg 
+               rgba(12, 25, 20, 0.9),
+               rgba(12, 25, 20, 0.62),
+               rgba(12, 25, 20, 0.62), ); 
+}
+
+.home-content{
+    width: min(1100px, calc (100% - 40px));
+    margin: 0 auto;
+    padding: 90px 0;
+}
+
+.welcome-section{
+    max-width: 780px;
+    margin-bottom: 72px;
+    color: var(--white);
+}
+
+.welcome-badge,
+.section-label{
+    display: inline-block;
+    margin-bottom: 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/**/
+.welcome-badge{
+    padding: 8px 12px;
+    color: #ffd7c4;
+    border: 1px solid rgba(187, 91, 53, 0.35);
+    border-radius: 999px;
+    background: rgba(187, 91, 53, 0.08);
+}
+
+.welcome-title{
+    max-width: 780px;
+    margin: 0 0 22px;
+    color: var(--white);
+    font-size: clamp(2.4rem, 6vw, 4.8rem);
+    line-height: 1.08;
+}
+
+.welcome-intro{
+    max-width: 680px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.12rem;
+}
+
+.intro-section,
+.work-section,
+.why-section{
+    margin-bottom: 34px;
+    padding: 38px;
+    border: 1px solid rgba(225, 255, 255, 0.4);
+    border-radius: 18px;
+    background: rgba(226, 222, 209, 0.95);
+    box-shadow: var(--shadow);
+}
+
+.intro-section h2,
+.work-section h2,
+.why-section h2{
+    margin: 0 0 18px;
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+    line-height: 1.2;
+}
+
+.intro-section p,
+.why-section p{
+    max-width: 800px;
+    color: #3f5048;
+}
+
+.section-label{
+    margin-bottom: 8px;
+    color: var(--accent-dark)
+}
+
+.work-grid{
+    display: grid;
+    grid-template-columns: repeat (2, minmax (0, 1fr));
+    gap: 24px;
+}
+
+.work-card{
+    padding: 18px;
+    border-radius: 14px;
+    background: var(--white);
+    box-shadow: 0 8px 22px rgba(23, 37, 31, 0.1);
+}
+
+.work-card h3 {
+    margin: 0 0 14px;
+    color: var(--accent-dark);
+}
+
+.work-images{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.work-images img{
+    width: 100%;
+    height: 220px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.why-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    align-items: center;
+}
+
+.why-content p + p {
+    margin-top: 16px;
+}
+
+.video-wrapper video{
+    width: 100%;
+    min-height: 300px;
+    border-radius: 12px;
+    background: #111;
+}
+
+/*==========================
+Internal Page layout
+Affects: product, About, Contact, Enquiry
+=============================*/
+
+.product-main,
+.about-main,
+.contact-main,
+.enquiry-main{
+    width: min(1100px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 72px 0;
+}
+
+.page-intro{
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.page-intro h1{
+    max-width: 850px;
+    margin: 0 auto 18px;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+}
+
+/*styles the body of the product and services page*/
+.product{
+    background-image: var(--paper);
+
+}
+
+/*styles the body of the equiry page*/
+.enquiry{
+ background: var(--muted-ink);   
+}
+
+/*styles the body of the contact page*/
+.contact{
+    background: #66736d;
+}
+
+/*styles the body of the about page*/
+.about{
+    background: #B58953;
+}
+
+/*Sets the footer surface, image background and side padding*/
+.site-footer {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 180px;
+    padding: 48px clamp(20px, 5vw, 72px);
+    color: #ffffff;
+    background-color: var(--ink);
+    background: linear-gradient( 
+        rgba (12, 25, 20, 0.68), 
+        rgba (12, 25, 20, 0.82)
+        );
+    background-image: url("../Images/wood1.jpg"); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*Keeps all footer content above the image overlay*/
+footer > * {
+    position: relative;
+    z-index: 1;
+}
+
+/*Reduces the top divider margin so that it doesnt touch the footer edge*/
+footer hr {
+    margin: 0 0 28px;
+    border-top-color: rgba(225, 255, 255, 0.32);
+}
+
+/*Places the footer's business information and links into two columns*/
+.footer-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+/**/
+.footer-brand{
+    justify-self: end;
+    text-align: right;
+    gap: 12px;
+    white-space: nowarp;
+}
+
+/**/
+#footer-brand{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+/**/
+
+/*Makes labels bold*/
+.footer-label{
+    display: block;
+    margin-top: 12px;
+    font-weight: 700;
+}
+/*Keeping the logo visible over the footer image*/
+.footer-logo{
+    display: block;
+    width: 64px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+/*Styling the footer slogan as secondary text*/
+.footer-text{
+    color: rgba(255, 255, 255, 0.76);
+} 
+
+/*Removes underlines from footer links while keeping them readable*/
+.links a{
+    color: rgba(255, 255, 255, 0.82);
+    text-decoration: none;
+}
+
+/*Adds feedback when a footer link is hovered or keyboard-focused*/
+.links a:hover,
+.links a:focus-visible{
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/*Stling and separating the copyright line at the bottom of the footer*/
+.copyright{
+    max-width: 1100px;
+    margin: 28px auto 0;
+    padding-top: 18px;
+    border-top: 1px solid rgba(225, 255, 255, 0.24);
+    color: rgba(255, 255, 255, 0.68);
+    text-align: center;
+}
+
+/*Adjust the header and the footer layout for smaller screens*/
+@media (max-width: 680px) {
+    /**Starts the brand and navigation vertically on mobile screens*/
+    header{
+        align-items: flex-start;
+        gap: 18px;
+        flex-direction: column;
+    }
+    /*Starting moble navigation at the left edge*/
+    .site-nav{
+        justify-content: flex-start;
+        gap: 14px 18px;
+    }
+    /*Reduces vertical page spacing on mobile*/
+    main{
+        padding: 56px 0;
+    }
+    /*Stacks the footer columns vertically on mobile screens*/
+    .footer-grid{
+        grid-template-columns: fr;
+    }
+    /*Returns the footer links to the lft when the columns stack*/
+    .links{
+        justify-self: start;
+        text-align: left;
+    }
+}
