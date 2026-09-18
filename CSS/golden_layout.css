@@ -403,7 +403,7 @@ Product Page
     padding: 10px 15px;
     border-radius: 999px;
     color: var(--accent-dark);
-    background: #f8ed8f;
+    background: var(--paper);
     font-weight: 700;
     text-decoration: none;
 }
@@ -502,10 +502,96 @@ ABOUT PAGE - TEAM + AUDIENCE LIST
     color: var(--muted-ink);
     background: #fffaf5;
 }
-/*=============================
-*/
 
+.audience-list li::before {
+    position: absolute;
+    top: 17px;
+    left: 16px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    content: "";
+    background: var(--accent);
+}
 
+.audience-list strong {
+    color: var(--ink);
+}
+
+/*====================================
+Call to action Section
+Affects: about page and product page
+=======================================*/
+.quote-callout {
+    padding: 36px;
+    border-radius: 16px;
+    color: var(--white);
+    background: var(--ink);
+    text-align: center;
+}
+
+.quote-callout h2 {
+    margin-top: 0;
+}
+
+/*======================================
+Contact and Enquiry Forms
+affects: contact, enquiry page
+========================================*/
+.contact-layout{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 28;
+    align-items: start;
+}
+
+.form-row{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.form-group label{
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd3cd;
+    border-radius: 7px;
+    color: var(--ink);
+    background: var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--accent);
+    outline: 3px solid rgba(187, 91, 53, 0.18);
+}
+
+.form-group small {
+    color: var(--muted-ink);
+}
+
+.contact-details a {
+    color: var(--accent-dark);
+    font-weight: 700;
+}
+
+/*===============================
+Shared Footer
+=================================*/
 /*Sets the footer surface, image background and side padding*/
 .site-footer {
     position: relative;
@@ -516,8 +602,8 @@ ABOUT PAGE - TEAM + AUDIENCE LIST
     color: #ffffff;
     background-color: var(--ink);
     background: linear-gradient( 
-        rgba (12, 25, 20, 0.68), 
-        rgba (12, 25, 20, 0.82)
+        rgba (12, 25, 20, 0.78), 
+        rgba (12, 25, 20, 0.88)
         );
     background-image: url("../Images/wood1.jpg"); 
     background-position: center;
@@ -545,22 +631,27 @@ footer hr {
     max-width: 1100px;
     margin: 0 auto;
 }
+
+.footer-info{
+    font-style: normal;
+}
+
 /**/
 .footer-brand{
+    display: flex;
     justify-self: end;
-    text-align: right;
+    align-items: center;
     gap: 12px;
     white-space: nowarp;
+    text-align: right;
 }
 
 /**/
-#footer-brand{
+.footer-brand-copy{
     display: flex;
     flex-direction: column;
-    gap: 1px;
+    gap: 2px;
 }
-
-/**/
 
 /*Makes labels bold*/
 .footer-label{
@@ -570,8 +661,8 @@ footer hr {
 }
 /*Keeping the logo visible over the footer image*/
 .footer-logo{
-    display: block;
     width: 64px;
+    height: 64px;
     object-fit: contain;
     object-position: left center;
 }
@@ -583,14 +674,14 @@ footer hr {
 
 /*Removes underlines from footer links while keeping them readable*/
 .links a{
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.84);
     text-decoration: none;
 }
 
 /*Adds feedback when a footer link is hovered or keyboard-focused*/
 .links a:hover,
 .links a:focus-visible{
-    color: #ffffff;
+    color: var(--white);
     text-decoration: underline;
 }
 
@@ -604,10 +695,22 @@ footer hr {
     text-align: center;
 }
 
-/*Adjust the header and the footer layout for smaller screens*/
+/*============================
+ACCESSIBILITY
+Affects: All pages
+===============================*/
+:focus-visible{
+    outline: 3px solid #ffbd8e;
+    outline-offset: 3px;
+}
+
+/*-----------------------------
+RESPONSIVE STYLES
+Affects: all pages
+--------------------------------*/
 @media (max-width: 680px) {
     /**Starts the brand and navigation vertically on mobile screens*/
-    header{
+    .site-header{
         align-items: flex-start;
         gap: 18px;
         flex-direction: column;
@@ -618,16 +721,63 @@ footer hr {
         gap: 14px 18px;
     }
     /*Reduces vertical page spacing on mobile*/
-    main{
+    .why-section{
         padding: 56px 0;
     }
     /*Stacks the footer columns vertically on mobile screens*/
     .footer-grid{
         grid-template-columns: fr;
     }
-    /*Returns the footer links to the lft when the columns stack*/
-    .links{
+    .footer-brand {
         justify-self: start;
         text-align: left;
+    }
+}
+
+@media (max-width: 700px) {
+    .product-main,
+    .about-main,
+    .contact-main,
+    .enquiry-main {
+        width: min(100% - 28px, 1100px);
+        padding: 45px 0;
+    }
+
+    .content-card,
+    .service-list,
+    .product-category,
+    .form-card,
+    .contact-details {
+        padding: 24px 20px;
+    }
+
+    .product-images,
+    .contact-layout,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .product-images img {
+        height: 230px;
+    }
+
+    .work-images {
+        grid-template-columns: 1fr;
+    }
+
+    .work-images img {
+        height: 230px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-image {
+        height: 240px;
     }
 }
