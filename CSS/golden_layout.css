@@ -55,8 +55,8 @@ select, textarea{
 Shared Header
 ------------------------*/
 /*Styling the full header and places the brand and navigation on one row*/
-.site-header{
-    position:sticky;
+.site-header {
+    position: sticky;
     top: 0;
     z-index: 10;
     display: flex;
@@ -162,23 +162,22 @@ keyboard focus reaches them*/
 /*----------------------
 Shared Buttons 
 ------------------------*/
-.primary-button{
+.primary-button {
     display: inline-block;
     margin-top: 24px;
     padding: 13px 22px;
     border: 0;
     border-radius: 6px;
+    background: var(--accent);
     color: var(--white);
     cursor: pointer;
     font-weight: 700;
     text-decoration: none;
-    transition: 
-            background-color 180ms ease,
-            transform 180ms ease;
+    transition: background-color 180ms ease, transform 180ms ease;
 }
 
-.primary-button:hover, 
-.primary-button:focus-visible{
+.primary-button:hover,
+.primary-button:focus-visible {
     background: var(--accent-dark);
     transform: translateY(-2px);
 }
@@ -190,7 +189,7 @@ Home Page Styles
 */
 
 /*Styling the backgound of my Home page*/
-.home{
+.home {
     position: relative;
     isolation: isolate;
     min-height: 100vh;
@@ -198,19 +197,20 @@ Home Page Styles
     background-image: url("../Images/woodwork5.jpg");
     background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;   
+    background-repeat: no-repeat;
 }
 
-.home-overlay{
+.home-overlay {
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(135deg 
-               rgba(12, 25, 20, 0.9),
-               rgba(12, 25, 20, 0.62),
-               rgba(12, 25, 20, 0.62), ); 
+    background: linear-gradient(
+        135deg,
+        rgba(12, 25, 20, 0.9),
+        rgba(12, 25, 20, 0.62),
+        rgba(12, 25, 20, 0.62)
+    );
 }
-
 .home-content{
     width: min(1100px, calc (100% - 40px));
     margin: 0 auto;
@@ -350,9 +350,12 @@ Affects: product, About, Contact, Enquiry
     padding: 72px 0;
 }
 
-.page-intro{
-    margin-bottom: 40px;
+.page-intro {
+    max-width: 700px;
+    margin: 0 auto 40px;
     text-align: center;
+    color: var(--muted-ink);
+    font-size: 1.1rem;
 }
 
 .page-intro h1{
@@ -373,7 +376,7 @@ Affects: product, About, Contact, Enquiry
 .service-list,
 .product-category,
 .form-card,
-.contact-details{
+.contact-details {
     margin-bottom: 28px;
     padding: 32px;
     border: 1px solid var(--line);
@@ -393,13 +396,13 @@ Affects: product, About, Contact, Enquiry
 /*=============================
 Product Page
 ================================*/
-.service-links{
+.service-links {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
 }
 
-.service-links a{
+.service-links a {
     padding: 10px 15px;
     border-radius: 999px;
     color: var(--accent-dark);
@@ -418,6 +421,32 @@ Product Page
 
 .product-category-text{
     color: var(--accent-dark)
+}
+
+.reveal,
+.reveal-left,
+.reveal-right {
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal {
+    transform: translateY(40px) scale(0.98);
+}
+
+.reveal-left {
+    transform: translateX(-50px);
+}
+
+.reveal-right {
+    transform: translateX(50px);
+}
+
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0) scale(1);
 }
 
 .product-images{
@@ -673,7 +702,7 @@ footer hr {
 } 
 
 /*Removes underlines from footer links while keeping them readable*/
-.links a{
+.links {
     color: rgba(255, 255, 255, 0.84);
     text-decoration: none;
 }
