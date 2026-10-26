@@ -232,3 +232,4 @@ The website is deployed using Netlify, a free and reliable hosting platform for 
 - the repository was linked to Netlify
 - the site was published and made available online
 - updates can be deployed by publishing the latest version of the project
+- link: https://golden-touch-carpentry.netlify.app/
