@@ -461,13 +461,6 @@ Product Page
     color: var(--accent-dark)
 }
 
-.reveal,
-.reveal-left,
-.reveal-right {
-    opacity: 0;
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
 .product-images{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
