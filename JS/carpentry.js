@@ -240,13 +240,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // =========================================================
   // MAP SECTION
-  // Purpose: render the business map only on pages that have #map
+  // Purpose: render the business map only on pages that have .map
   // =========================================================
-  const mapContainer = document.getElementById("map");
+  const mapContainers = document.querySelectorAll(".map");
 
-  if (mapContainer) {
+  mapContainers.forEach((mapContainer) => {
     if (window.L) {
-      const map = L.map("map").setView([-26.1449, 28.0422], 13);
+      const map = L.map(mapContainer).setView([-26.1449, 28.0422], 13);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: '&copy; OpenStreetMap contributors'
@@ -259,5 +259,5 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       console.warn("Leaflet library not loaded. Map cannot be displayed.");
     }
-  }
+  });
 });
