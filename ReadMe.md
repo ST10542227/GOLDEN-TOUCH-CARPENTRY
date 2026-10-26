@@ -1,6 +1,6 @@
 # Golden Touch Carpentry Website
 
-A multi-page business website for Golden Touch Carpentry, built using plain HTML and CSS. The site includes a home page, products and services page, about page, contact page, and enquiry page with a consistent layout and responsive design.
+A multi-page business website for Golden Touch Carpentry, built using plain HTML, CSS, and JavaScript. The site includes a home page, products and services page, about page, contact page, and enquiry page with a consistent layout and responsive design.
 
 ## Project Overview
 
@@ -14,6 +14,7 @@ This website was improved and updated to provide:
 - proper form layouts for contact and enquiry sections
 - modern card-based sections for products and team profile information
 - cleaner HTML structure and corrected CSS issues
+- interactive JavaScript functionality for a better user experience
 
 ## Pages Included
 
@@ -31,6 +32,14 @@ The styling is centralized in:
 
 This makes it easier to maintain the website and keeps the layout consistent across all pages.
 
+## JavaScript File
+
+The JavaScript functionality is stored in:
+
+- JS/carpentry.js
+
+This script was added as Part 3 of the project to improve the website by adding interactivity, validation, and dynamic behaviour.
+
 ## Folder Structure
 
 GoldenTouch/
@@ -41,6 +50,8 @@ GoldenTouch/
 ├── enquiry.html
 ├── css/
 │   └── golden_layout.css
+├── JS/
+│   └── carpentry.js
 └── Images/
     ├── logo.png
     ├── woodwork5.jpg
@@ -103,6 +114,45 @@ GoldenTouch/
 - added a shared footer to all pages
 - included business contact details and branding
 
+### 7. JavaScript Functionality (Part 3)
+The JavaScript file was added to improve functionality and user interaction. The following features were included:
+
+- SEO metadata updates:
+  - updates the meta description
+  - updates the meta keywords
+  - adds author information
+  - updates the page title when needed
+
+- dynamic copyright year:
+  - the footer year updates automatically based on the current date
+
+- form validation:
+  - checks required fields
+  - validates email format
+  - validates phone numbers
+  - checks minimum character lengths
+  - shows clear error messages
+
+- user feedback:
+  - shows success messages after a valid submission
+  - shows error messages when input is invalid
+  - resets the form after successful submission
+
+- smooth scrolling:
+  - anchor links scroll smoothly to the relevant section
+
+- gallery lightbox functionality:
+  - images can be clicked to open in a larger view
+  - improves the product gallery presentation
+
+- map functionality:
+  - map section is loaded when present
+  - displays business location information
+
+- general interactivity:
+  - JavaScript is loaded after DOM content is ready
+  - prevents script errors by running only once the page has loaded
+
 ## How to Run the Website
 
 1. Open the project folder in a browser.
@@ -116,6 +166,7 @@ You can also use a local web server if needed, but the site works as a static HT
 - Make sure all image files exist in the correct folder and names match exactly.
 - File names are case-sensitive in some environments, so keep names consistent.
 - Some image names have spaces in them (for example, `custom kitchen2.jpg` and `home decor1.jpg`), so ensure the file names are exactly correct when using them in HTML.
+- JavaScript functionality works best when the files are served from a local web server or a live hosting environment.
 
 ## Credit
 
@@ -132,6 +183,52 @@ Possible future enhancements include:
 - add social media links
 - add a booking or quote request workflow
 
-## PART 3
+This stage focused on:
+- improving the overall customer experience
+- validating form input
+- improving website responsiveness through interactive elements
+- enhancing product image presentation with a lightbox
+- making the site more professional and polished
+
+The JavaScript was therefore added to support the final phase of development by making the website more functional and dynamic.
 
 COMMIT LOG
+
+The project should include a commit history with several meaningful commits, including:
+
+- Initial website structure and homepage layout
+- Added product and services page
+- Improved About page content and layout
+- Added contact and enquiry pages
+- Implemented JavaScript validation and interactivity
+- Added map and gallery functionality
+- Updated SEO and accessibility features
+- Final styling and project review
+
+## Final Note
+
+The completed website demonstrates a full business website created in stages:
+- HTML for content and structure
+- CSS for responsive styling and layout
+- JavaScript for interactivity and functionality
+
+This combination ensures the website is more professional, user-friendly, and suitable for the project rubric.
+
+## Deployment
+
+The website is deployed using Netlify, a free and reliable hosting platform for static websites built with HTML, CSS, and JavaScript. Netlify allows the project to be published quickly and provides automatic deployment updates when changes are pushed to the connected repository.
+
+### Why Netlify was used
+- suitable for static website projects
+- simple deployment process
+- supports HTML, CSS, and JavaScript files
+- provides automatic HTTPS
+- allows easy updates and live hosting
+- ideal for business websites such as this project
+
+### Netlify Deployment Summary
+- the project files were prepared for deployment
+- the website was connected to a Netlify account
+- the repository was linked to Netlify
+- the site was published and made available online
+- updates can be deployed by publishing the latest version of the project
