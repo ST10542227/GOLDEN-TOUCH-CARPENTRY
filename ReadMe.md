@@ -131,3 +131,7 @@ Possible future enhancements include:
 - connect the forms to email or a backend system
 - add social media links
 - add a booking or quote request workflow
+
+## PART 3
+
+COMMIT LOG

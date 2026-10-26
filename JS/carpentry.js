@@ -72,41 +72,40 @@ document.addEventListener("DOMContentLoaded", () => {
   // ----------------------------
   // 3. Form validation
   // ----------------------------
+document.addEventListener("DOMContentLoaded", () => {
   const forms = document.querySelectorAll("form");
-  if (forms.length > 0) {
-    console.log("Forms found:", forms.length);
 
-    forms.forEach((form) => {
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
+  forms.forEach((form) => {
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
 
-        const allValid = validateForm(form);
+      const isValid = validateForm(form);
 
-        if (!allValid) {
-          console.log("Form invalid");
-          return;
-        }
+      if (!isValid) {
+        showMessage(form, "Please correct the highlighted fields.", "error");
+        return;
+      }
 
-        const fileInput = form.querySelector('input[type="file"]');
-        if (fileInput && fileInput.files.length > 0) {
-          const file = fileInput.files[0];
-          const maxSize = 5 * 1024 * 1024;
+      try {
+        const formData = new FormData(form);
 
-          if (file.size > maxSize) {
-            showMessage(
-              form,
-              "File is too large. Please upload a file under 5MB.",
-              "error"
-            );
-            return;
-          }
+        const response = await fetch(form.action || window.location.href, {
+          method: form.method || "POST",
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error("Form submission failed");
         }
 
         showMessage(form, "Your enquiry has been submitted successfully.", "success");
         form.reset();
-      });
+
+      } catch (error) {
+        showMessage(form, "There was a problem submitting the form. Please try again.", "error");
+      }
     });
-  }
+  });
 
   function validateForm(form) {
     let valid = true;
@@ -115,9 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fields.forEach((field) => {
       const value = field.value.trim();
-      const isRequired = field.hasAttribute("required");
 
-      if (isRequired && value === "") {
+      if (field.hasAttribute("required") && value === "") {
         markFieldError(field, "This field is required.");
         valid = false;
         return;
@@ -128,32 +126,25 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!emailPattern.test(value)) {
           markFieldError(field, "Please enter a valid email address.");
           valid = false;
-          return;
         }
       }
 
-      if (
-        (field.type === "tel" || field.name === "phone" || field.id === "enquiry-phone") &&
-        value !== ""
-      ) {
+      if ((field.type === "tel" || field.name === "phone") && value !== "") {
         const phonePattern = /^[0-9+\s()-]{7,20}$/;
         if (!phonePattern.test(value)) {
           markFieldError(field, "Please enter a valid phone number.");
           valid = false;
-          return;
         }
       }
 
-      if (field.minLength && value.length < field.minLength) {
-        markFieldError(field, `Minimum length is ${field.minLength} characters.`);
+      if (field.hasAttribute("minlength") && value.length < Number(field.getAttribute("minlength"))) {
+        markFieldError(field, `Minimum length is ${field.getAttribute("minlength")} characters.`);
         valid = false;
-        return;
       }
 
-      if (field.maxLength && value.length > field.maxLength) {
-        markFieldError(field, `Maximum length is ${field.maxLength} characters.`);
+      if (field.hasAttribute("maxlength") && value.length > Number(field.getAttribute("maxlength"))) {
+        markFieldError(field, `Maximum length is ${field.getAttribute("maxlength")} characters.`);
         valid = false;
-        return;
       }
 
       clearFieldError(field);
@@ -170,10 +161,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const err = document.createElement("div");
     err.className = "form-error";
-    err.textContent = message;
     err.style.color = "#d93025";
     err.style.fontSize = "0.8rem";
     err.style.marginTop = "5px";
+    err.textContent = message;
 
     if (field.parentElement) {
       field.parentElement.appendChild(err);
@@ -199,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
     msg.className = type === "success" ? "success-message" : "error-message";
     msg.textContent = message;
     msg.style.marginTop = "12px";
-    msg.style.padding = "12px 14px";
+    msg.style.padding = "10px 12px";
     msg.style.borderRadius = "8px";
     msg.style.fontWeight = "700";
 
@@ -215,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.appendChild(msg);
   }
-
+});
   // ----------------------------
   // 4. Smooth scrolling
   // ----------------------------
@@ -260,3 +251,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+// =========================================================
+// MAP SECTION
+// Purpose: render the business map only on pages that have #map
+// =========================================================
+const mapContainer = document.getElementById("map");
+
+if (mapContainer) {
+  if (window.L) {
+    const map = L.map("map").setView([-26.1449, 28.0422], 13);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.marker([-26.1449, 28.0422])
+      .addTo(map)
+      .bindPopup("Golden Touch Carpentry<br>Rosebank Rd, Rosebank, Johannesburg")
+      .openPopup();
+  } else {
+    console.warn("Leaflet library not loaded. Map cannot be displayed.");
+  }
+}
