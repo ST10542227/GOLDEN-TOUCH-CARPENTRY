@@ -72,42 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ----------------------------
   // 3. Form validation
   // ----------------------------
-document.addEventListener("DOMContentLoaded", () => {
-  const forms = document.querySelectorAll("form");
-
-  forms.forEach((form) => {
-    form.addEventListener("submit", async function (event) {
-      event.preventDefault();
-
-      const isValid = validateForm(form);
-
-      if (!isValid) {
-        showMessage(form, "Please correct the highlighted fields.", "error");
-        return;
-      }
-
-      try {
-        const formData = new FormData(form);
-
-        const response = await fetch(form.action || window.location.href, {
-          method: form.method || "POST",
-          body: formData
-        });
-
-        if (!response.ok) {
-          throw new Error("Form submission failed");
-        }
-
-        showMessage(form, "Your enquiry has been submitted successfully.", "success");
-        form.reset();
-
-      } catch (error) {
-        showMessage(form, "There was a problem submitting the form. Please try again.", "error");
-      }
-    });
-  });
-
-  function validateForm(form) {
+  const validateForm = (form) => {
     let valid = true;
 
     const fields = form.querySelectorAll("input, textarea, select");
@@ -122,16 +87,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (field.type === "email" && value !== "") {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(value)) {
+        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!pattern.test(value)) {
           markFieldError(field, "Please enter a valid email address.");
           valid = false;
         }
       }
 
       if ((field.type === "tel" || field.name === "phone") && value !== "") {
-        const phonePattern = /^[0-9+\s()-]{7,20}$/;
-        if (!phonePattern.test(value)) {
+        const pattern = /^[0-9+\s()-]{7,20}$/;
+        if (!pattern.test(value)) {
           markFieldError(field, "Please enter a valid phone number.");
           valid = false;
         }
@@ -151,27 +116,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     return valid;
-  }
+  };
 
-  function markFieldError(field, message) {
+  const markFieldError = (field, message) => {
     clearFieldError(field);
 
     field.style.border = "2px solid #d93025";
     field.style.background = "#fff5f5";
 
-    const err = document.createElement("div");
-    err.className = "form-error";
-    err.style.color = "#d93025";
-    err.style.fontSize = "0.8rem";
-    err.style.marginTop = "5px";
-    err.textContent = message;
+    const error = document.createElement("div");
+    error.className = "form-error";
+    error.textContent = message;
+    error.style.color = "#d93025";
+    error.style.fontSize = "0.8rem";
+    error.style.marginTop = "5px";
 
     if (field.parentElement) {
-      field.parentElement.appendChild(err);
+      field.parentElement.appendChild(error);
     }
-  }
+  };
 
-  function clearFieldError(field) {
+  const clearFieldError = (field) => {
     field.style.border = "";
     field.style.background = "";
 
@@ -180,9 +145,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const oldError = parent.querySelector(".form-error");
       if (oldError) oldError.remove();
     }
-  }
+  };
 
-  function showMessage(form, message, type) {
+  const showMessage = (form, message, type) => {
     const oldMessage = form.querySelector(".success-message, .error-message");
     if (oldMessage) oldMessage.remove();
 
@@ -205,8 +170,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     form.appendChild(msg);
-  }
-});
+  };
+  
+  const forms = document.querySelectorAll("form");
+  forms.forEach((form) => {
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      if (!validateForm(form)) {
+        showMessage(form, "Please correct the highlighted fields.", "error");
+        return;
+      }
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action || window.location.href, {
+          method: form.method || "POST",
+          body: formData
+        });
+
+        if (!response.ok) throw new Error("Submission failed");
+
+        showMessage(form, "Your enquiry has been submitted successfully.", "success");
+        form.reset();
+      } catch (error) {
+        showMessage(form, "There was a problem submitting the form. Please try again.", "error");
+      }
+    });
+  });
+  
   // ----------------------------
   // 4. Smooth scrolling
   // ----------------------------
@@ -227,50 +219,45 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ----------------------------
-  // 5. Reveal images on scroll
+  // 5.  images on scroll
   // ----------------------------
-  const revealItems = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
-  if (revealItems.length > 0) {
-    if ("IntersectionObserver" in window) {
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.15
-      });
+  const images = document.querySelectorAll(".gallery-image");
+  images.forEach((img) => {
+    img.addEventListener("click", () => {
+      const modal = document.createElement("div");
+      modal.className = "lightbox";
 
-      revealItems.forEach((item) => {
-        revealObserver.observe(item);
-      });
+      const modalImg = document.createElement("img");
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+
+      modal.appendChild(modalImg);
+      document.body.appendChild(modal);
+
+      modal.addEventListener("click", () => modal.remove());
+    });
+  });
+
+  // =========================================================
+  // MAP SECTION
+  // Purpose: render the business map only on pages that have #map
+  // =========================================================
+  const mapContainer = document.getElementById("map");
+
+  if (mapContainer) {
+    if (window.L) {
+      const map = L.map("map").setView([-26.1449, 28.0422], 13);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      L.marker([-26.1449, 28.0422])
+        .addTo(map)
+        .bindPopup("Golden Touch Carpentry<br>Rosebank Rd, Rosebank, Johannesburg")
+        .openPopup();
     } else {
-      revealItems.forEach((item) => item.classList.add("visible"));
+      console.warn("Leaflet library not loaded. Map cannot be displayed.");
     }
   }
 });
-
-// =========================================================
-// MAP SECTION
-// Purpose: render the business map only on pages that have #map
-// =========================================================
-const mapContainer = document.getElementById("map");
-
-if (mapContainer) {
-  if (window.L) {
-    const map = L.map("map").setView([-26.1449, 28.0422], 13);
-
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    L.marker([-26.1449, 28.0422])
-      .addTo(map)
-      .bindPopup("Golden Touch Carpentry<br>Rosebank Rd, Rosebank, Johannesburg")
-      .openPopup();
-  } else {
-    console.warn("Leaflet library not loaded. Map cannot be displayed.");
-  }
-}

@@ -392,6 +392,44 @@ Affects: product, About, Contact, Enquiry
     object-fit: cover;
 }
 
+.gallery-item {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.gallery-image {
+    width: 200px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+     border-color 0.25s ease;
+    cursor: pointer;
+}
+
+.gallery-image:hover {
+    transform: scale(1.03);
+    border-color: #b7632c;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.lightbox img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
 
 /*=============================
 Product Page
@@ -428,25 +466,6 @@ Product Page
 .reveal-right {
     opacity: 0;
     transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal {
-    transform: translateY(40px) scale(0.98);
-}
-
-.reveal-left {
-    transform: translateX(-50px);
-}
-
-.reveal-right {
-    transform: translateX(50px);
-}
-
-.reveal.visible,
-.reveal-left.visible,
-.reveal-right.visible {
-    opacity: 1;
-    transform: translateX(0) translateY(0) scale(1);
 }
 
 .product-images{

@@ -45,8 +45,9 @@
             Have a question or need a custom carpentry estimate?
             Get in touch with our team across Gauteng.
         </p>
-      <form action ="#" method="post" 
-            class="inquiry-form" enctype="multipart/form-data">
+      <form action ="https://formsubmit.co/tankisopraise@gmail.com" 
+       method="post" class="inquiry-form" enctype="multipart/form-data">
+       <input type="hidden" name="_subject" value="Quote Request">
             <!-- CUSTOMER NAME and surname -->
             <div class="form-group">
                 <label for="firstname">First Name:</label>
@@ -74,7 +75,6 @@
                 <label for="email">Email Address:</label>
                 <input 
                     type="email" 
-                    minlength="2"
                     id="email" 
                     name="studentEmail"
                     placeholder="name@example.com" 
@@ -85,6 +85,7 @@
                 <label for="enquiry-phone">Phone / WhatsApp Number</label>
                 <input 
                     type="tel"
+                    minlength="7"
                     id="enquiry-phone"
                     name="phone"
                     placeholder="089 765 4232"
