@@ -237,27 +237,3 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.addEventListener("click", () => modal.remove());
     });
   });
-
-  // =========================================================
-  // MAP SECTION
-  // Purpose: render the business map only on pages that have .map
-  // =========================================================
-  const mapContainers = document.querySelectorAll(".map");
-
-  mapContainers.forEach((mapContainer) => {
-    if (window.L) {
-      const map = L.map(mapContainer).setView([-26.1449, 28.0422], 13);
-
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(map);
-
-      L.marker([-26.1449, 28.0422])
-        .addTo(map)
-        .bindPopup("Golden Touch Carpentry<br>Rosebank Rd, Rosebank, Johannesburg")
-        .openPopup();
-    } else {
-      console.warn("Leaflet library not loaded. Map cannot be displayed.");
-    }
-  });
-});
