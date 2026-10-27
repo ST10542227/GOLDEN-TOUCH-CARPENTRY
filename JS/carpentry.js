@@ -218,22 +218,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ----------------------------
-  // 5.  images on scroll
-  // ----------------------------
-  const images = document.querySelectorAll(".gallery-image");
-  images.forEach((img) => {
-    img.addEventListener("click", () => {
-      const modal = document.createElement("div");
-      modal.className = "lightbox";
-
-      const modalImg = document.createElement("img");
-      modalImg.src = img.src;
-      modalImg.alt = img.alt;
-
-      modal.appendChild(modalImg);
-      document.body.appendChild(modal);
-
-      modal.addEventListener("click", () => modal.remove());
-    });
-  });
+    // ----------------------------
+    // 5.  images on scroll
+    // ----------------------------
+    const images = document.querySelectorAll(".gallery-image");
+    images.forEach((img) => {
+      img.addEventListener("click", () => {
+        const modal = document.createElement("div");
+        modal.className = "lightbox";
+  
+        const modalImg = document.createElement("img");
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+  
+        modal.appendChild(modalImg);
+        document.body.appendChild(modal);
+  
+        modal.addEventListener("click", () => modal.remove());
+      });
+    }); // Closing brace for images.forEach
+  }); // Closing brace for the DOMContentLoaded event listener
