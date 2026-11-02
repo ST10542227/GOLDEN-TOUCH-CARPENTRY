@@ -63,11 +63,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // ----------------------------
   // 2. Update footer year
   // ----------------------------
-  const copyright = document.querySelector(".copyright");
-  if (copyright) {
-    const currentYear = new Date().getFullYear();
-    copyright.innerHTML = `&copy; ST10542227# Golden Touch Carpentry. All rights reserved. ${currentYear}.`;
-  }
+ const copyright = document.querySelector(".copyright");
+if (copyright) {
+  const now = new Date();
+  const currentDate = now.toLocaleDateString("en-ZA", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+
+  copyright.innerHTML = `&copy; ST10542227# Golden Touch Carpentry. All rights reserved. ${currentDate}.`;
+}
 
   // ----------------------------
   // 3. Form validation
